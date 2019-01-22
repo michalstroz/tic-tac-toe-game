@@ -21,7 +21,7 @@ function calculateWinner(squares) {
   return null;
 }
 
-const getLocation = (square) => {
+function getLocation(square) {
   const posObj = {
     0: 'row 1, column 1',
     1: 'row 1, column 2',

@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Board from './board';
 import {calculateWinner, getLocation} from './functions';
 
