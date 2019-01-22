@@ -1,4 +1,4 @@
-export { calculateWinner }
+export { calculateWinner, getLocation }
 
 function calculateWinner(squares) {
   const lines = [
@@ -19,4 +19,20 @@ function calculateWinner(squares) {
     }
   }
   return null;
+}
+
+const getLocation = (square) => {
+  const posObj = {
+    0: 'row 1, column 1',
+    1: 'row 1, column 2',
+    2: 'row 1, column 3',
+    3: 'row 2, column 1',
+    4: 'row 2, column 2',
+    5: 'row 2, column 3',
+    6: 'row 3, column 1',
+    7: 'row 3, column 2',
+    8: 'row 3, column 3',
+  }
+
+  return posObj[square];
 }
