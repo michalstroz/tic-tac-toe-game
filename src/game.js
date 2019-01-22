@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Board from './board';
-import {calculateWinner} from './functions';
+import {calculateWinner, getLocation} from './functions';
 
 class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       history: [{
-        squares: Array(9).fill(null)
+        squares: Array(9).fill(null),
+        location: null
       }],
       stepNumber: 0,
       xIsNext: true
@@ -25,7 +26,8 @@ class Game extends React.Component {
     squares[i] = this.state.xIsNext ? 'X' : 'O';
     this.setState({
       history: history.concat([{
-        squares: squares
+        squares: squares,
+        location: getLocation(i)
       }]),
       stepNumber: history.length,
       xIsNext: !this.state.xIsNext
@@ -47,9 +49,10 @@ class Game extends React.Component {
 
     const moves = history.map((step, move) => {
       const desc = move ? 'Go to move #' + move : 'Go to game start';
+      const currLoc = step.location ? step.location : "";
       return (
         <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+          <button onClick={() => this.jumpTo(move)}>{desc + " " + currLoc}</button>
         </li>
       )
     });
