@@ -9,26 +9,26 @@ class Board extends React.Component {
     );
   }
 
+  renderBoard(row, column) {
+    const board = [];
+    let cellNumber = 0;
+
+    for (let i = 0; i < row; i++) {
+      const cells = [];
+
+      for (let j = 0; j < column; j++) {
+        cells.push(this.renderSquare(cellNumber));
+        cellNumber++;
+      }
+      board.push(<div key={i} className="board-row">{cells}</div>);
+    }
+    return board;
+  }
+
   render() {
 
     return(
-      <div>
-        <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-        </div>
-      </div>
+      <div>{this.renderBoard(3, 3)}</div>
     );
   }
 }
