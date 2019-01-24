@@ -33,6 +33,5 @@ function getLocation(square) {
     7: 'row 3, column 2',
     8: 'row 3, column 3',
   }
-
   return posObj[square];
 }
