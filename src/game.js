@@ -13,8 +13,16 @@ class Game extends React.Component {
         }
       ],
       stepNumber: 0,
-      xIsNext: true
+      xIsNext: true,
+      order: true
     };
+    this.sortMoves = this.sortMoves.bind(this);
+  }
+
+  sortMoves() {
+    this.setState({
+      order: !this.state.order
+    });
   }
 
   handleClick(i) {
@@ -69,6 +77,12 @@ class Game extends React.Component {
       </li>);
     });
 
+    let sortInfo = "DESC";
+    if (!this.state.order) {
+      moves.reverse();
+      sortInfo = "ASC";
+    }
+
     let status;
     if (winner) {
       status = "Winner: " + winner;
@@ -85,6 +99,7 @@ class Game extends React.Component {
       </div>
       <div className="game-info">
         <div>{status}</div>
+        <button className="sort-button" onClick={this.sortMoves}>{sortInfo}</button>
         <ol>{moves}</ol>
       </div>
     </div>);
