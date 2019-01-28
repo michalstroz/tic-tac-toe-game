@@ -82,10 +82,12 @@ class Game extends React.Component {
       moves.reverse();
       sortInfo = "ASC";
     }
-
+    console.log(this.state.stepNumber)
     let status;
     if (winner.winner) {
       status = "Winner: " + winner.winner;
+    } else if (this.state.stepNumber === 9) {
+      status = "Nobody has won";
     } else {
       status = 'Next player: ' + (
         this.state.xIsNext
