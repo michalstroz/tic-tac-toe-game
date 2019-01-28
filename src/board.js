@@ -4,9 +4,7 @@ import Square from './square';
 class Board extends React.Component {
 
   renderSquare(i) {
-    return (
-      <Square value={this.props.squares[i]} onClick={() => this.props.onClick(i)}/>
-    );
+    return (<Square key={i} value={this.props.squares[i]} onClick={() => this.props.onClick(i)}/>);
   }
 
   renderBoard(row, column) {
@@ -27,9 +25,7 @@ class Board extends React.Component {
 
   render() {
 
-    return(
-      <div>{this.renderBoard(3, 3)}</div>
-    );
+    return (<div>{this.renderBoard(3, 3)}</div>);
   }
 }
 
