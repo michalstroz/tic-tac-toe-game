@@ -29,7 +29,7 @@ class Game extends React.Component {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[this.state.stepNumber];
     const squares = current.squares.slice();
-    if (calculateWinner(squares) || squares[i]) {
+    if (calculateWinner(squares).winner || squares[i]) {
       return;
     }
     squares[i] = this.state.xIsNext
@@ -84,8 +84,8 @@ class Game extends React.Component {
     }
 
     let status;
-    if (winner) {
-      status = "Winner: " + winner;
+    if (winner.winner) {
+      status = "Winner: " + winner.winner;
     } else {
       status = 'Next player: ' + (
         this.state.xIsNext
@@ -95,7 +95,7 @@ class Game extends React.Component {
 
     return (<div className="game">
       <div className="game-board">
-        <Board squares={current.squares} onClick={(i) => this.handleClick(i)}/>
+        <Board squares={current.squares} win={winner && winner.line} onClick={(i) => this.handleClick(i)}/>
       </div>
       <div className="game-info">
         <div>{status}</div>
